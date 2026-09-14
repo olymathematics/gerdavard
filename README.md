@@ -1,14 +1,18 @@
 # Gerdavard Olympiad Problem Bank (`gerdavard`)
 
-This project is a git-native, open-source bank of math olympiad problems (statement, solution, tags, difficulty, prerequisite knowledge) in LaTeX, designed for worksheet/booklet generation, reusable problems, and future extensibility.
+This project is a git-native, open-source bank of math olympiad problems (statement, solution, tags, difficulty, prerequisite knowledge) in LaTeX, designed for discovering and reusing problems by copying their data directly from the UI.
 
-The MVP will provide a REST API, CLI, and web UI for accessing the problem bank, with simple filtering queries by subject, tag, or difficulty, alongside basic structural validation. LaTeX remains the problem content format; a dedicated LaTeX package is outside the MVP scope. Persian support is future-facing — structural bilingualism is possible but not currently required.
+The MVP will provide a REST API, CLI, and web UI for accessing the problem bank, with simple filtering queries by subject, tag, or difficulty, alongside basic structural validation. LaTeX remains the problem content format. Reuse will be through copying problem data directly from the UI; no dedicated LaTeX package or PDF catalog will be developed. Persian support is future-facing — structural bilingualism is possible but not currently required.
 
 This README describes the planned MVP and repository conventions. The API, CLI, UI, problem bank, and validation workflows are not implemented yet.
 
+## Naming Philosophy
+
+گردآورد (Gerdavard) is a Persian name that evokes gathering things together, reflecting this repository's identity as a shared collection of olympiad problems.
+
 ## Core Philosophy
 
-- **Problems are the smallest reusable unit.** All documents (worksheets, exams, hint sheets, booklets) are *derived* from the same problem bank.
+- **Problems are the smallest reusable unit.** Users copy problem statements, solutions, and metadata directly from the UI for reuse in their own materials.
 - **LaTeX is the native format** — not an intermediate; ensures highest math typesetting quality and sustainability.
 - **Open source, non-commercial.** Focused on collaborative, generational improvement for all students.
 
@@ -18,7 +22,7 @@ This README describes the planned MVP and repository conventions. The API, CLI, 
 
    - **REST API:** serve problem metadata and LaTeX source from the repository's `problems/` and `taxonomy/` structure, with simple filters by subject, tag, or difficulty.
    - **CLI:** list and retrieve problems from the terminal, with the same basic filtering options.
-   - **Web UI:** browse problems, filter by subject, tag, or difficulty, and view or copy a problem's LaTeX source. The browsing experience is inspired by MathNet.
+   - **Web UI:** browse problems, filter by subject, tag, or difficulty, and copy problem data, including LaTeX statements, solutions, and metadata, directly from the UI for reuse. The browsing experience is inspired by MathNet.
    - Example queries include problems with subject `ALGEBRA`, tag `FUNCTIONAL_EQUATIONS`, or difficulty `IMO_P1`.
    - API routes, CLI syntax, and implementation details (including hosting, authentication, and caching) are still to be defined.
 
@@ -133,19 +137,10 @@ GitHub Actions workflows in `.github/workflows/` are planned to run the followin
 2. **Compile check for new/changed problems.** Any added or modified `problem.<lang>.tex` / `solution.<lang>.tex` is rendered standalone (via `pdflatex` or similar) to confirm it has no LaTeX compile issues.
 3. **Required/optional field rules.** `metadata.yaml` is validated against the defined required/optional field schema. File/directory naming conventions (`<kind>.<lang>.tex`, integer ids) are enforced as part of this check.
 
-Link reachability (under `source.link`) can optionally be checked but is not required. No hints or translations are required — these are optional.
-
-## Roadmap (Post-MVP)
-
-- Revisit a dedicated LaTeX package for including problems and solutions in worksheets and booklets.
-- Consider richer queries and filtering beyond the MVP's subject, tag, and difficulty filters.
-- Extend multilingual content and hints support as needed.
-
 ## Outside MVP Scope
 
-- A dedicated LaTeX package.
 - Advanced query features beyond simple filtering by subject, tag, or difficulty.
-- No catalog-PDF build step (dropped; not being implemented).
+- PDF export of search results may be considered later, but is not part of the MVP.
 - No automated correctness/translation checking beyond CI structure. Math/translation review is human/manual.
 - No submodules or multi-repo logic.
 - No Persian `.fa.tex` or hints artifacts *required* for the MVP. The file-naming protocol allows for future multilingual content, but it is not enforced for now.
