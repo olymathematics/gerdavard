@@ -2,7 +2,9 @@
 
 This project is a git-native, open-source bank of math olympiad problems (statement, solution, tags, difficulty, prerequisite knowledge) in LaTeX, designed for worksheet/booklet generation, reusable problems, and future extensibility.
 
-MVP targets LaTeX-native authors and basic structural validation; post-MVP will add more features (see Roadmap below). Persian support is future-facing — structural bilingualism is possible but not currently required.
+The MVP will provide a REST API, CLI, and web UI for accessing the problem bank, with simple filtering queries by subject, tag, or difficulty, alongside basic structural validation. LaTeX remains the problem content format; a dedicated LaTeX package is outside the MVP scope. Persian support is future-facing — structural bilingualism is possible but not currently required.
+
+This README describes the planned MVP and repository conventions. The API, CLI, UI, problem bank, and validation workflows are not implemented yet.
 
 ## Core Philosophy
 
@@ -10,14 +12,15 @@ MVP targets LaTeX-native authors and basic structural validation; post-MVP will 
 - **LaTeX is the native format** — not an intermediate; ensures highest math typesetting quality and sustainability.
 - **Open source, non-commercial.** Focused on collaborative, generational improvement for all students.
 
-## Usage
+## MVP Usage (Planned)
 
-1. **Include Single Problems**
+1. **Browse and Query Problems**
 
-   - In your own `.tex` documents, load `\usepackage{olymprepo}` and use:
-     - `\repositoryproblem{<id>}` to insert a problem.
-     - `\repositoryproblemsolution{<id>}` to insert its solution.
-   - Optional `[lang=xx]` argument selects an explicit language; commands error gracefully (no fallback) if the artifact/id/lang isn't found.
+   - **REST API:** serve problem metadata and LaTeX source from the repository's `problems/` and `taxonomy/` structure, with simple filters by subject, tag, or difficulty.
+   - **CLI:** list and retrieve problems from the terminal, with the same basic filtering options.
+   - **Web UI:** browse problems, filter by subject, tag, or difficulty, and view or copy a problem's LaTeX source. The browsing experience is inspired by MathNet.
+   - Example queries include problems with subject `ALGEBRA`, tag `FUNCTIONAL_EQUATIONS`, or difficulty `IMO_P1`.
+   - API routes, CLI syntax, and implementation details (including hosting, authentication, and caching) are still to be defined.
 
 2. **Adding Problems**
 
@@ -28,7 +31,10 @@ MVP targets LaTeX-native authors and basic structural validation; post-MVP will 
      - `metadata.yaml` (see below)
    - File naming protocol: every problem/solution/hints artifact must match `<kind>.<lang>.tex`, with `lang ∈ {en, fa}`, `kind ∈ {problem, solution}` (future: `hints`). Only `.en` files are required for now; `.fa` is permitted but not required for the MVP.
 
-## Project Structure
+## Planned Project Structure
+
+The API, CLI, and UI will be part of the MVP; their directory layout is still to be defined.
+
 ```plaintext
 problems/                   # Main problem bank (directory per problem)
 ├── 1001/
@@ -41,9 +47,8 @@ taxonomy/                   # Controlled vocabularies
 ├── required_knowledge.yaml # e.g. BASICS_OF_FUNCTIONS
 ├── subject.yaml            # e.g. ALGEBRA
 ├── tags_controlled.yaml    # e.g. FUNCTIONAL_EQUATIONS
-olymprepo.sty               # LaTeX package macros
 scripts/                    # CI validation scripts
-.gitlab-ci.yml              # Pipeline for validation
+.github/workflows/          # GitHub Actions validation workflows
 ```
 
 ## metadata.yaml (per problem)
@@ -113,7 +118,7 @@ tags:
   uncontrolled: []
 ```
 
-- `difficulty`, `required_knowledge`, `subject`, and `tags.controlled` are checked against the matching `taxonomy/*.yaml` file by CI.
+- `difficulty`, `required_knowledge`, `subject`, and `tags.controlled` will be checked against the matching `taxonomy/*.yaml` file by CI.
 - `tags.uncontrolled` is free-form and never validated against taxonomy — for informal/community labels (e.g. `TRICKY`, `CLASSIC`) not yet promoted to a controlled tag.
 - `required_knowledge` is always a list, even if length 1. Same for `tags.controlled`/`tags.uncontrolled`.
 - Under `source`, at least one of `link`, `contest`, or `book` should identify where the problem came from; the others may be left blank.
@@ -122,7 +127,7 @@ tags:
 
 ## CI/CD and Validation
 
-On push/MR, three checks run (currently only #1 is implemented, in `scripts/check_subject_taxonomy.py` via `.gitlab-ci.yml`):
+GitHub Actions workflows in `.github/workflows/` are planned to run the following checks on pushes and pull requests:
 
 1. **Metadata vs. taxonomy.** Every `metadata.yaml` parses, and every controlled field (`difficulty`, `required_knowledge`, `subject`, `tags.controlled`) only uses values present in the matching `taxonomy/*.yaml` file.
 2. **Compile check for new/changed problems.** Any added or modified `problem.<lang>.tex` / `solution.<lang>.tex` is rendered standalone (via `pdflatex` or similar) to confirm it has no LaTeX compile issues.
@@ -132,18 +137,15 @@ Link reachability (under `source.link`) can optionally be checked but is not req
 
 ## Roadmap (Post-MVP)
 
-**Web UI & REST API.** Because AI-assisted development makes it cheap to build, a browsing UI and REST API serving the repository's problems is planned as a near-term post-MVP component:
+- Revisit a dedicated LaTeX package for including problems and solutions in worksheets and booklets.
+- Consider richer queries and filtering beyond the MVP's subject, tag, and difficulty filters.
+- Extend multilingual content and hints support as needed.
 
-- REST API reads directly from the repository's `problems/`/`taxonomy/` structure and serves problem metadata + LaTeX source.
-- Web UI lets users browse/filter by source, tags, subject, difficulty, etc., and copy the raw LaTeX for a problem directly from the page.
-- Deliberately modeled on the MathNet browsing experience.
-- No further design has been locked in yet (hosting, auth, caching, etc. are all open).
+## Outside MVP Scope
 
-**Not in MVP scope:**
-
-- No query/filter commands.
+- A dedicated LaTeX package.
+- Advanced query features beyond simple filtering by subject, tag, or difficulty.
 - No catalog-PDF build step (dropped; not being implemented).
-- No web frontend or REST API for the MVP itself. Pure git, LaTeX, and CI structure for the MVP.
 - No automated correctness/translation checking beyond CI structure. Math/translation review is human/manual.
 - No submodules or multi-repo logic.
 - No Persian `.fa.tex` or hints artifacts *required* for the MVP. The file-naming protocol allows for future multilingual content, but it is not enforced for now.
