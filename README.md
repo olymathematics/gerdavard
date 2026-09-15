@@ -8,7 +8,7 @@ This README describes the planned MVP and repository conventions. The API, CLI, 
 
 ## Naming Philosophy
 
-گردآورد (Gerdavard) is a Persian name that evokes gathering things together, reflecting this repository's identity as a shared collection of olympiad problems.
+<p dir="ltr">Gerdavard (<bdo dir="rtl">گردآورد</bdo>) is a Persian name that evokes gathering things together, reflecting this repository's identity as a shared collection of olympiad problems.</p>
 
 ## Core Philosophy
 
