@@ -30,10 +30,10 @@ This README describes the planned MVP and repository conventions. The API, CLI, 
 
    - Add a new folder `problems/<id>/`, incrementing the problem number (integer ids, no leading zeroes; first id is `1001`).
    - Each problem requires:
-     - `problem.en.tex` (LaTeX problem statement, inside a `problem` environment)
-     - `solution.en.tex` (LaTeX solution, inside a `solution` environment)
+     - `problem.en.tex`
+     - `solution.en.tex`
      - `metadata.yaml` (see below)
-   - File naming protocol: every problem/solution/hints artifact must match `<kind>.<lang>.tex`, with `lang ∈ {en, fa}`, `kind ∈ {problem, solution}` (future: `hints`). Only `.en` files are required for now; `.fa` is permitted but not required for the MVP.
+   - File naming protocol: every problem/solution/hints artifact must match `<kind>.<lang>.tex`, with `lang ∈ {en, fa}`, `kind ∈ {problem, solution, hint}`. Only `.en` files are required for now; `.fa` is permitted but not required for the MVP.
 
 ## Planned Project Structure
 
@@ -58,17 +58,18 @@ scripts/                    # CI validation scripts
 ## metadata.yaml (per problem)
 ```yaml
 source:
-  link:                     # primary web link to source/post
   contest:
-    name:                   # controlled vocab? TBD — currently free-form slug, e.g. balkan_mathematical_olympiad
+    name:                   # controlled vocab, e.g. balkan_mathematical_olympiad
     year:
     day:
     problem:
+  aops:
+    link:                   # primary web link to source/post
   book:
     cite:                   # citation style, e.g. apa
     page_number:
     problem_number:
-  mathnet_id:                # cross-reference to MathNet, if applicable
+  mathnet_id:               # cross-reference to MathNet, if applicable
 
 # optional — revisit requirement after MVP
 contributors:
@@ -90,6 +91,8 @@ tags:
     - <enum(s) from taxonomy/tags_controlled.yaml>
   uncontrolled:
     - <free-form label(s), not checked against any taxonomy>
+
+license:
 ```
 
 **Example:**
@@ -120,6 +123,9 @@ tags:
   controlled:
     - FUNCTIONAL_EQUATIONS
   uncontrolled: []
+
+license: creative-commons-v1
+
 ```
 
 - `difficulty`, `required_knowledge`, `subject`, and `tags.controlled` will be checked against the matching `taxonomy/*.yaml` file by CI.
@@ -127,7 +133,6 @@ tags:
 - `required_knowledge` is always a list, even if length 1. Same for `tags.controlled`/`tags.uncontrolled`.
 - Under `source`, at least one of `link`, `contest`, or `book` should identify where the problem came from; the others may be left blank.
 - `contributors` and `solution` are optional for the MVP and will be revisited (required/optional status, and — for `solution` — its exact shape) once the MVP is validated.
-- The full required-vs-optional field matrix enforced by CI is still being finalized.
 
 ## CI/CD and Validation
 
