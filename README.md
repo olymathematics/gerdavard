@@ -28,7 +28,7 @@ This README describes the planned MVP and repository conventions. The API, CLI, 
 
 2. **Adding Problems**
 
-   - Add a new folder `problems/<id>/`, incrementing the problem number (integer ids, no leading zeroes; first id is `1001`).
+   - Add a new folder `problems/<id>/`, incrementing the problem number (integer ids, no leading zeroes; first id is `1`).
    - Each problem requires:
      - `problem.en.tex`
      - `solution.en.tex`
@@ -41,7 +41,7 @@ The API, CLI, and UI will be part of the MVP; their directory layout is still to
 
 ```plaintext
 problems/                   # Main problem bank (directory per problem)
-├── 1001/
+├── 1/
 │   ├── problem.en.tex
 │   ├── solution.en.tex
 │   └── metadata.yaml

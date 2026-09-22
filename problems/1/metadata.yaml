@@ -1,0 +1,30 @@
+source:
+  contest:
+    name: international_mathematical_olympiad
+    year: 1959
+    day: 1
+    problem: 1
+  link:
+  book:
+    cite:
+    page_number:
+    problem_number:
+  mathnet_id:
+
+contributors: []
+
+difficulty: imo_p1
+
+required_knowledge:
+  - divisibility
+
+subject: number_theory
+
+tags:
+  controlled:
+    - divisibility
+    - greatest_common_division
+  uncontrolled:
+    - pre_number_theory
+
+license: creative-commons-v1
