@@ -1,0 +1,20 @@
+source:
+  contest:
+    name: International Mathematical Olympiad
+    year: 1989
+    day: 2
+    problem: 5
+  link: https://artofproblemsolving.com/community/c6h62176p372271
+difficulty: imo_p2
+required_knowledge:
+  - chinese_remainder_theorem
+  - prime_powers
+subject: number_theory
+tags:
+  controlled:
+    - chinese_remainder_theorem
+    - consecutive_integers
+    - prime_powers
+  uncontrolled:
+    - composite_numbers
+    - existence

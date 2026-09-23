@@ -1,0 +1,22 @@
+Start with the increasing arithmetic progression
+\[
+b_i = 1 + i \cdot 2019! \qquad (0 \leq i \leq 2018).
+\]
+It is easy to see that the terms $b_i$ are pairwise relatively prime: if a prime $p$ divided both $b_i$ and $b_j$ for $i \neq j$, then $p$ would divide $(i-j)\cdot 2019!$, and since $0 < |i-j| < 2019$ we would have $p \leq 2019$, so $p$ divides $2019!$, contradicting $p \mid b_i$.
+
+Let $p_1, \dots, p_m$ be all the distinct primes that divide at least one of the $b_i$, and let $q_1, \dots, q_l$ be the distinct prime divisors of the given odd integer $k$. For each $i$, write $b_i = p_i^{e_i} \cdot t_i$ where $t_i$ is not divisible by $p_i$ (most $e_i$ will be zero; precisely one of them is positive for each prime).
+
+Since each $q_j$ is odd (hence at least $3$), for every $j$ there exists a residue $r_j$ modulo $q_j$ such that neither $r_j$ nor $e_i + r_j$ is congruent to $-1$ modulo $q_j$, for any $i$. By the Chinese Remainder Theorem there exists a positive integer $M$ satisfying
+\[
+M \equiv r_j \pmod{q_j} \qquad \text{for all } j = 1, \dots, l.
+\]
+
+Consider the new arithmetic progression
+\[
+a_i = b_i \cdot \prod_{s=1}^m p_s^{M}, \qquad 0 \leq i \leq 2018.
+\]
+The exponents appearing in the prime factorizations of the $a_i$ are of the form $M$ or $e_i + M$. By construction none of these exponents is congruent to $-1$ modulo any $q_j$. Consequently none of the numbers $d(a_i)$ is divisible by any $q_j$, and therefore
+\[
+\gcd\bigl(k,\, d(a_1)d(a_2)\cdots d(a_{2019})\bigr) = 1,
+\]
+as required.

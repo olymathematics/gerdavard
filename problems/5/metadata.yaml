@@ -1,0 +1,21 @@
+source:
+  contest:
+    name: Turkey National Mathematical Olympiad
+    year: 2019
+    day: 1
+    problem: 2
+  link: https://artofproblemsolving.com/community/c6h1974193p13694178
+difficulty: imo_p3
+required_knowledge:
+  - chinese_remainder_theorem
+  - divisor_function
+  - arithmetic_progressions
+subject: number_theory
+tags:
+  controlled:
+    - chinese_remainder_theorem
+    - divisor_function
+    - arithmetic_progression
+  uncontrolled:
+    - gcd
+    - odd_number
