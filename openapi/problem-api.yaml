@@ -1,0 +1,48 @@
+openapi: 3.0.3
+info:
+  title: Gerdavard Problem Bank API
+  version: 0.1.0
+  description: API for browsing olympiad problems stored in the repository.
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/v1/problems/{id}:
+    get:
+      operationId: getProblemById
+      tags: [Problems]
+      summary: Get a problem by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Integer problem identifier.
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+      responses:
+        '200':
+          description: Problem found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '404':
+          description: Problem does not exist.
+components:
+  schemas:
+    Problem:
+      type: object
+      required: [id, metadata, files]
+      properties:
+        id:
+          type: integer
+          format: int32
+        metadata:
+          type: object
+          additionalProperties: true
+        files:
+          type: object
+          description: Repository files keyed by their filename.
+          additionalProperties:
+            type: string
