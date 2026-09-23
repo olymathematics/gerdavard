@@ -6,7 +6,7 @@ source:
     problem: 1
   link: http://artofproblemsolving.com/community/c6h54814p341470
 
-difficulty: imo_p1
+difficulty: easier_than_imo_p1
 
 required_knowledge:
   - divisibility

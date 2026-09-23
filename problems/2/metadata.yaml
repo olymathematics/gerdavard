@@ -1,21 +1,27 @@
 source:
   contest:
-    name: international_mathematical_olympiad
-    year: 1959
+    name: balkan_mathematical_olympiad
+    year: 2023
     day: 1
-    problem: 1
-  link: http://artofproblemsolving.com/community/c6h54814p341470
+    problem: 3
+  aops:
+    link: https://artofproblemsolving.com/community/c6h3069481p27703501
 
 difficulty: imo_p1
 
 required_knowledge:
   - divisibility
+  - prime_numbers
+  - Integer_polynomials
+  - chinese_remainder_theorem
+  - dirichlet_theorem
 
 subject: number_theory
 
 tags:
   controlled:
-    - divisibility
-    - greatest_common_division
+    - polynomials
+    - chinese_remainder_theorem
+    - dirichlet_theorem
+    - Integer_polynomials
   uncontrolled:
-    - pre_number_theory
