@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import org.gerdavard.api.generated.model.Problem;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,10 +22,10 @@ public class ProblemRepository {
         this.problemsRoot = Path.of(problemsRoot).toAbsolutePath().normalize();
     }
 
-    public Problem findById(int id) {
+    public Optional<Problem> findById(int id) {
         Path problemDirectory = problemsRoot.resolve(Integer.toString(id)).normalize();
         if (!problemDirectory.startsWith(problemsRoot) || !Files.isDirectory(problemDirectory)) {
-            throw new ProblemNotFoundException(id);
+            return Optional.empty();
         }
 
         try {
@@ -41,7 +42,7 @@ public class ProblemRepository {
                     ? yaml.load(read(metadataPath))
                     : Map.of();
 
-            return new Problem().id(id).metadata(metadata == null ? Map.of() : metadata).files(files);
+            return Optional.of(new Problem().id(id).metadata(metadata == null ? Map.of() : metadata).files(files));
         } catch (IOException | ClassCastException exception) {
             throw new IllegalStateException("Could not read problem " + id, exception);
         }

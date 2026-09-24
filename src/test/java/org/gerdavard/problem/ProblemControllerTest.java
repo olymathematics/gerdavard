@@ -19,7 +19,7 @@ class ProblemControllerTest {
     private MockMvc mvc;
 
     @MockBean
-    private ProblemRepository repository;
+    private ProblemService service;
 
     @Test
     void returnsProblemById() throws Exception {
@@ -27,7 +27,7 @@ class ProblemControllerTest {
                 .id(1)
                 .metadata(java.util.Map.of("subject", "number_theory"))
                 .files(java.util.Map.of("problem.en.tex", "2 + 2 = 4"));
-        org.mockito.Mockito.when(repository.findById(1)).thenReturn(problem);
+        org.mockito.Mockito.when(service.findById(1)).thenReturn(problem);
 
         mvc.perform(get("/api/v1/problems/1"))
                 .andExpect(status().isOk())
@@ -37,7 +37,7 @@ class ProblemControllerTest {
 
     @Test
     void returnsNotFoundForMissingProblem() throws Exception {
-        org.mockito.Mockito.when(repository.findById(999)).thenThrow(new ProblemNotFoundException(999));
+        org.mockito.Mockito.when(service.findById(999)).thenThrow(new ProblemNotFoundException(999));
 
         mvc.perform(get("/api/v1/problems/999"))
                 .andExpect(status().isNotFound());

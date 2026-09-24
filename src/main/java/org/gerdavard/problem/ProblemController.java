@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ProblemController implements ProblemsApi {
-    private final ProblemRepository repository;
+    private final ProblemService service;
 
-    public ProblemController(ProblemRepository repository) {
-        this.repository = repository;
+    public ProblemController(ProblemService service) {
+        this.service = service;
     }
 
     @Override
     public ResponseEntity<Problem> getProblemById(Integer id) {
-        return ResponseEntity.ok(repository.findById(id));
+        return ResponseEntity.ok(service.findById(id));
     }
 }

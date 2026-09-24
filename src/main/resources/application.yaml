@@ -4,3 +4,7 @@ gerdavard:
 spring:
   application:
     name: gerdavard-api
+
+springdoc:
+  swagger-ui:
+    url: /openapi/problem-api.yaml
