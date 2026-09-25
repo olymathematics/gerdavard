@@ -1,0 +1,24 @@
+source:
+  contest:
+    name: ELMO_shortlist
+    year: 2014
+    day: null
+    problem: N7
+  link: https://artofproblemsolving.com/community/c6h599357p3557448
+difficulty: imo_p1
+required_knowledge:
+  - chinese_remainder_theorem
+  - fermat_little_theorem
+  - dirichlet_theorem
+  - modular_arithmetic
+  - divisibility
+  - prime_numbers
+subject: number_theory
+tags:
+  controlled:
+    - chinese_remainder_theorem
+    - prime_numbers
+    - fermat_little_theorem
+    - dirichlet_theorem
+  uncontrolled:
+

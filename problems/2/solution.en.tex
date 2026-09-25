@@ -1,0 +1,179 @@
+Let
+$$
+N=2023^{2023}.
+$$
+
+We claim that the required polynomials are exactly the following:
+
+\begin{itemize}
+\item $P(x)=x^m$ for some $m\in\mathbb{N}$;
+\item $P(x)=c$ for some $c\in\mathbb{N}$ satisfying $\omega(c)\leq N+1$.
+\end{itemize}
+
+First, every polynomial of these forms indeed satisfies the required condition. For $P(x)=x^m$, we have
+$$
+\omega(P(n))=\omega(n).
+$$
+For a constant polynomial $P(x)=c$ with $\omega(c)\leq N+1$, whenever $\omega(n)>N$, we have $\omega(n)\geq N+1\geq\omega(c)$.
+
+It remains to prove that there are no other polynomials.
+
+The constant case is immediate: if $P(x)=c$ is constant, then $P(n)$ must be positive for all sufficiently relevant $n$, so $c\in\mathbb{N}$. Moreover, if $\omega(c)>N+1$, choosing $n$ to be the product of $N+1$ distinct primes gives
+$$
+\omega(n)=N+1<\omega(c),
+$$
+contradicting the required condition. Thus $\omega(c)\leq N+1$.
+
+Now assume that $P$ is non-constant. Write
+$$
+P(x)=\alpha x^m Q(x),
+$$
+where $\alpha\in\mathbb{Z}\setminus\{0\}$, $m\geq 0$, and
+$$
+Q(0)\neq 0.
+$$
+
+We first prove a standard lemma.
+
+\textbf{Lemma.}
+Let $f(x)\in\mathbb{Z}[x]$ be a non-constant polynomial. Then there are infinitely many primes $q$ for which
+$$
+q\mid f(a)
+$$
+for some integer $a$.
+
+\textbf{Proof.}
+If $f(0)=0$, then the result is immediate: every prime dividing a sufficiently large value of $f$ occurs as a divisor of some value of $f$.
+
+Suppose now that $f(0)\neq 0$. Consider
+$$
+g(x)=\frac{f(xf(0))}{f(0)}.
+$$
+Since $f(xf(0))$ has constant term $f(0)$, the polynomial $g(x)$ has integer coefficients and
+$$
+g(0)=1.
+$$
+
+Suppose, for contradiction, that only finitely many primes $p_1,\ldots,p_k$ divide some value of $g$. Choose a sufficiently large integer $M$ such that
+$$
+|g(Mp_1\cdots p_k)|>1.
+$$
+Since
+$$
+g(Mp_1\cdots p_k)\equiv g(0)=1\pmod{p_i}
+$$
+for every $i$, none of the primes $p_i$ divides this value. But its absolute value is greater than $1$, so it has a prime divisor, a contradiction.
+
+Thus infinitely many primes divide values of $g$, and hence infinitely many primes divide values of $f$.
+\hfill$\square$
+
+Now suppose that $Q$ is constant, say $Q(x)=c$. Then
+$$
+P(x)=\alpha c x^m.
+$$
+Put $d=\alpha c$, so that
+$$
+P(x)=d x^m.
+$$
+
+Since $P(n)$ must be positive for every positive integer $n$ with $\omega(n)>N$, we must have $d>0$.
+
+If $d>1$, choose $n$ to be the product of $N+1$ distinct primes, all of which are coprime to $d$. Then
+$$
+\omega(n)=N+1,
+$$
+while
+$$
+\omega(P(n))=\omega(dn^m)=\omega(d)+\omega(n)>N+1,
+$$
+contradicting the required condition. Hence $d=1$, and therefore
+$$
+P(x)=x^m.
+$$
+
+It remains to consider the case where $Q$ is non-constant. Write
+$$
+Q(x)=\alpha_d x^d+\cdots+\alpha_1x+\alpha_0,
+$$
+where
+$$
+\alpha_d\neq0,\qquad \alpha_0\neq0.
+$$
+
+By the lemma, there are infinitely many primes which divide some value of $Q$. Choose distinct primes
+$$
+q_1,\ldots,q_T
+$$
+such that
+$$
+q_i>|\alpha_0|
+$$
+for every $i$, and where $T>N+1$.
+
+For each $i$, choose a nonzero integer $a_i$ such that
+$$
+q_i\mid Q(a_i).
+$$
+We can choose $a_i\neq0$ because if $q_i\mid a_i$, then
+$$
+q_i\mid Q(a_i)-Q(0),
+$$
+and hence, since $q_i\mid Q(a_i)$, we would obtain $q_i\mid Q(0)=\alpha_0$, contradicting $q_i>|\alpha_0|$.
+
+Now choose distinct primes
+$$
+p_1,\ldots,p_{N+1}
+$$
+such that
+$$
+p_1\equiv a_i\pmod{q_i}
+\qquad (1\leq i\leq T),
+$$
+and
+$$
+p_j\equiv1\pmod{q_1q_2\cdots q_T}
+\qquad (2\leq j\leq N+1).
+$$
+
+Such primes exist by the Chinese Remainder Theorem and Dirichlet's theorem on primes in arithmetic progressions. Indeed, the residue classes involved are coprime to the corresponding moduli.
+
+Set
+$$
+n=p_1p_2\cdots p_{N+1}.
+$$
+Then
+$$
+\omega(n)=N+1.
+$$
+
+On the other hand, for every $i$ we have
+$$
+n\equiv p_1\equiv a_i\pmod{q_i},
+$$
+and therefore
+$$
+Q(n)\equiv Q(a_i)\equiv0\pmod{q_i}.
+$$
+Since $q_i\mid Q(n)$ and $Q(n)$ is a factor of $P(n)$ up to the factors $\alpha$ and $n^m$, we obtain
+$$
+\omega(P(n))\geq T.
+$$
+Choosing $T>N+1$ gives
+$$
+\omega(P(n))>N+1=\omega(n),
+$$
+contradicting the required condition.
+
+Therefore $Q$ must be constant, and hence the only non-constant solutions are
+$$
+P(x)=x^m,\qquad m\in\mathbb{N}.
+$$
+
+Thus all required polynomials are
+$$
+\boxed{P(x)=x^m\quad(m\in\mathbb{N})}
+$$
+and
+$$
+\boxed{P(x)=c\quad(c\in\mathbb{N},\ \omega(c)\leq2023^{2023}+1)}.
+$$

@@ -1,0 +1,5 @@
+Let $p_{k}$ be the $k$-th prime number for $k \geq 1$. Set $a_{1} = 2$. For $n \geq 1$, let $a_{n+1}$ be the least integer greater than $a_{n}$ that is congruent to $-k$ modulo $p_{k+1}$ for all $k \leq n$. Such an integer exists by the Chinese Remainder Theorem.
+
+Thus, for all $k \geq 0$, we have $k + a_{n} \equiv 0 \pmod{p_{k+1}}$ whenever $n \geq k+1$. Therefore, at most $k+1$ terms of the sequence $\{k + a_{n}\}$ can be prime: from the $(k+2)$-th term onward, each value is a nontrivial multiple of $p_{k+1}$ and hence composite.
+
+This completes the proof.

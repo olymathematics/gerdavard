@@ -1,0 +1,19 @@
+source:
+  contest:
+    name: international_mathematical_olympiad
+    year: 1989
+    day: 2
+    problem: 2
+  link: https://artofproblemsolving.com/community/c6h62176p372271
+difficulty: easier_than_imo_p1
+required_knowledge:
+  - chinese_remainder_theorem
+  - perfect_powers
+subject: number_theory
+tags:
+  controlled:
+    - chinese_remainder_theorem
+    - constructive
+    - perfect_powers
+  uncontrolled:
+

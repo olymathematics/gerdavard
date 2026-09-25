@@ -1,0 +1,19 @@
+source:
+  contest:
+    name: Czech_and_Slovak_Mathematical_Olympiad
+    year: 1997
+    day: 1
+    problem: 1
+  link: https://artofproblemsolving.com/community/c6t30973f6h1170929_the_sequence_contains_only_finitely_many_primes
+difficulty: imo_p1
+required_knowledge:
+  - chinese_remainder_theorem
+  - prime_numbers
+subject: number_theory
+tags:
+  controlled:
+    - chinese_remainder_theorem
+    - prime_numbers
+    - sequences
+    - constructive
+  uncontrolled:
