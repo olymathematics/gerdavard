@@ -1,0 +1,10 @@
+gerdavard:
+  problems-root: ${GERDAVARD_PROBLEMS_ROOT:problems}
+
+spring:
+  application:
+    name: gerdavard-api
+
+springdoc:
+  swagger-ui:
+    url: /openapi/problem-api.yaml
