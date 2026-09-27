@@ -1,0 +1,13 @@
+Let $p_1, p_2, \dots, p_n$ be the first $n$ primes. By the Chinese Remainder Theorem, there exists a positive integer $x_0$ satisfying the system of congruences
+\[
+x + k \equiv 0 \pmod{p_k^2}, \qquad 1 \leq k \leq n.
+\]
+(Equivalently, $x \equiv -k \pmod{p_k^2}$ for each $k$.)
+
+Set $x = x_0 + \prod_{k=1}^n p_k^2$. Then for each $k = 1, \dots, n$ we have
+\[
+x + k \equiv 0 \pmod{p_k^2},
+\]
+so $p_k^2$ divides $x + k$. In particular, $x + k$ is divisible by $p_k$ at least twice. Moreover, since $x$ can be taken larger than any fixed bound, we may assume $x + k > p_k^2$, whence $x + k$ has a square factor and is therefore not a pure power of a single prime.
+
+Thus the $n$ consecutive positive integers $x+1, x+2, \dots, x+n$ are none of them an integral power of a prime.

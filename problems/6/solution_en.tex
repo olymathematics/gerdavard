@@ -1,0 +1,31 @@
+Let $S$ be the product of all primes less than $2014$. By Dirichlet’s theorem there exist infinitely many primes $p$ such that $p \equiv 1 \pmod{S}$.
+
+Using the Chinese Remainder Theorem, there exists a natural number $n$ satisfying
+\[
+n \equiv -c \pmod{p}, \qquad n \equiv 1 \pmod{p-1}
+\]
+(and also $n \equiv 1 \pmod{q}$ for all primes $q < 2014$ not dividing $p-1$, if necessary). Then $\gcd(n,S)=1$, so $n$ is not divisible by any prime less than $2014$. By Fermat’s Little Theorem we obtain
+\[
+p \mid n+c \mid a^n + b^n + n \equiv a + b + n \pmod{p}.
+\]
+Since $n \equiv -c \pmod{p}$ this yields $a + b - c \equiv 0 \pmod{p}$. As $p$ may be chosen arbitrarily large we conclude
+\[
+a + b = c. \tag{$\star$}
+\]
+
+Now fix an arbitrary prime $q > 2015$. Again by the Chinese Remainder Theorem there exists a natural number $t$ such that
+\[
+t \equiv -c \pmod{p}, \qquad t \equiv q \pmod{p-1}
+\]
+(and $\gcd(t,S)=1$). Then
+\[
+p \mid t+c \mid a^t + b^t + t \equiv a^q + b^q - c \pmod{p}.
+\]
+Since $p$ can be arbitrarily large we obtain
+\[
+a^q + b^q = c. \tag{$\star\star$}
+\]
+
+From $(\star)$ and $(\star\star)$ it follows that $a = b = 1$ and $c = 2$.
+
+(One readily verifies that the triple $(1,1,2)$ indeed satisfies the original condition.)
