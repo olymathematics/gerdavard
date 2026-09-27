@@ -20,7 +20,7 @@ subject: number_theory
 
 tags:
   controlled:
-    - polynomials
+    - basic_properties_of_polynomials
     - chinese_remainder_theorem
     - dirichlet_theorem
     - Integer_polynomials
