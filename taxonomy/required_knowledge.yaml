@@ -1,5 +1,5 @@
 - divisibility
-- prime_numbers
+- unique_prime_factorization
 - greatest_common_division
 - least_common_multiple
 - modular_arithmetic
@@ -7,8 +7,5 @@
 - fermat_little_theorem
 - wilson_theorem
 - dirichlet_theorem
-- arithmetic_progression
-- perfect_powers
-- sequences
 - integer_polynomials
 - basic_properties_of_polynomials

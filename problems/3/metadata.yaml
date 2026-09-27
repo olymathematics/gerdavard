@@ -8,12 +8,11 @@ source:
 difficulty: imo_p1
 required_knowledge:
   - chinese_remainder_theorem
-  - prime_numbers
 subject: number_theory
 tags:
   controlled:
     - chinese_remainder_theorem
-    - prime_numbers
     - sequences
     - constructive
   uncontrolled:
+  - prime_numbers
