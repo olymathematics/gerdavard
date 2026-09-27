@@ -8,7 +8,6 @@ source:
 difficulty: imo_p2
 required_knowledge:
   - chinese_remainder_theorem
-  - divisor_function
   - arithmetic_progressions
   - greatest_common_divisor
 subject: number_theory
